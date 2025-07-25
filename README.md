@@ -38,8 +38,8 @@ A modern decentralized exchange (DEX) built with Next.js, featuring secure walle
 3. **Set up environment variables**
    Create a `.env.local` file in the root directory:
    ```env
-   NEXT_PUBLIC_PRIVY_APP_ID=your-privy-app-id
-   PRIVY_APP_SECRET=your-privy-app-secret
+   NEXT_PUBLIC_PRIVY_APP_ID=cmdihr9g100grkw0jldocmtd8
+   PRIVY_APP_SECRET=qfKUmZmmnSyBbB7fo1mphqeeGbhTHUn1RN8iqigDrcmXHsp4ZS4UDkWr35q7H69BivQiCCMRx5FxK89dnmC4Dpz
    NEXT_PUBLIC_PRIVY_ENVIRONMENT=development
    ```
 
