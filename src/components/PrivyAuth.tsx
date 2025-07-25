@@ -15,7 +15,29 @@ export default function PrivyAuth({ onLogin, onLogout }: PrivyAuthProps) {
   const [isLoading, setIsLoading] = useState(false);
   
   const { sendCode, loginWithCode } = useLoginWithEmail();
-  const { login, logout, authenticated, user } = usePrivy();
+  const { logout, authenticated, user } = usePrivy();
+
+  // Check if Privy is properly configured
+  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
+  const isPrivyConfigured = appId && appId !== 'your-privy-app-id';
+
+  if (!isPrivyConfigured) {
+    return (
+      <div className="flex items-center gap-4">
+        <div className="text-white text-sm">
+          <span className="text-yellow-400">⚠️</span> Privy not configured
+        </div>
+        <a
+          href="https://console.privy.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
+        >
+          Configure Privy
+        </a>
+      </div>
+    );
+  }
 
   const handleSendCode = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -10,8 +10,30 @@ export default function WalletInfo() {
   const wallet = wallets[0]; // Get the first wallet
   const [copied, setCopied] = useState(false);
 
+  // Check if Privy is properly configured
+  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
+  const isPrivyConfigured = appId && appId !== 'your-privy-app-id';
+
+  if (!isPrivyConfigured) {
+    return (
+      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+        <h3 className="text-xl font-bold text-white mb-4">Your Wallet</h3>
+        <div className="text-center text-gray-400">
+          <p>Configure Privy to see your wallet information</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!authenticated || !user || !wallet) {
-    return null;
+    return (
+      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+        <h3 className="text-xl font-bold text-white mb-4">Your Wallet</h3>
+        <div className="text-center text-gray-400">
+          <p>Login to see your wallet information</p>
+        </div>
+      </div>
+    );
   }
 
   const copyToClipboard = async (text: string) => {

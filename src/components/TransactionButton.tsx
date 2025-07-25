@@ -9,6 +9,18 @@ export default function TransactionButton() {
   const { authenticated } = usePrivy();
   const [isLoading, setIsLoading] = useState(false);
 
+  // Check if Privy is properly configured
+  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
+  const isPrivyConfigured = appId && appId !== 'your-privy-app-id';
+
+  if (!isPrivyConfigured) {
+    return (
+      <div className="text-center text-gray-400 text-sm">
+        Configure Privy to enable transactions
+      </div>
+    );
+  }
+
   const handleSendTransaction = async () => {
     if (!authenticated) {
       alert('Please login first');
@@ -32,7 +44,11 @@ export default function TransactionButton() {
   };
 
   if (!authenticated) {
-    return null;
+    return (
+      <div className="text-center text-gray-400 text-sm">
+        Login to enable transactions
+      </div>
+    );
   }
 
   return (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowDownUp, TrendingUp, Wallet, Zap } from 'lucide-react';
+import { ArrowDownUp, TrendingUp, Zap } from 'lucide-react';
 import WalletInfo from './WalletInfo';
 import TransactionButton from './TransactionButton';
 
